@@ -2,39 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Duit Kas by DeeOgikk</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>HELO WTROLD!</h1>
-    <button onclick="munculinNotif('ok', 'gas')">buat notif</button>
+    <div class="app">
+        <h1 class="saldo">Saldo anda:<br><a id="saldo"></a></h1>
+        <div class="inputsaldocontainer">
+            <input type="number" id="inputsaldo">
+        </div>
+        <div class="actionbtns">
+            <div id="kurang">Cash-Out</div>
+            <div id="tambah">Cash-In</div>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
-
-<script>
-    if (Notification.permission !== "granted") {
-        Notification.requestPermission().then(function(permission) {
-            console.log("Izin notifikasi:", permission);
-        });
-    }
-
-    setInterval(function() {
-        munculinNotif("Pengingat", "Ada pengisian uang kas yang belum diproses!");
-    }, 5000);
-    
-    function munculinNotif(title, text) {
-        if(Notification.permission === "granted") {
-            const notif = new Notification(title, {
-                body: text,
-                tag: "PEMASUKKAN!"
-            })
-        }else {
-            izinaksesNotif();
-        }
-    }
-
-    function izinaksesNotif() {
-        Notification.requestPermission().then(function(permission){
-        })
-    }
-</script>
